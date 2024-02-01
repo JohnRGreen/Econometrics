@@ -1,0 +1,256 @@
+
+% Inbuilt themes in beamer
+\documentclass[aspectratio=169]{beamer}
+\usepackage{graphicx}
+% Theme choice:
+\usetheme{CambridgeUS}
+
+% Title page details: 
+\title{Econometrics Discussion Section 2} 
+\author{John Green}
+\date{Spring 2024}
+
+
+\begin{document}
+
+% Title page
+\begin{frame}
+    \titlepage 
+\end{frame}
+
+% Outline frame
+\begin{frame}{Recap}
+    What did we do in the first week?
+    \begin{itemize}
+        \item Review of probability and statistics (Stock \& Watson chapters 2 and 3)
+        \item Random variables and their first 4 moments
+        \item Marginal and joint distributions
+        \item LLN and CLT
+        \item Properties of estimators: consistency, unbiasedness, normal approximation
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Recap}
+    What about in the second week?
+    \begin{itemize}
+        \item Review of probability and statistics (Stock \& Watson chapters 2 and 3)
+        \item Random variables and their first 4 moments
+        \item Marginal and joint distributions
+        \item LLN and CLT
+        \item Properties of estimators: consistency, unbiasedness, normal approximation
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Random variables}
+    \begin{itemize}
+        \item A random variable is a \textit{function} from a space of possible outcomes to (usually) the real numbers.
+        \item Example: 
+        \begin{itemize}
+            \item Roll two dice and add up the numbers
+            \item Sample space is all the possible rolls of the two dice (how many?)
+            \item Outcome space is all the possible sums of those rolls (how many?)
+            \item The sum is a random variable
+        \end{itemize} 
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \centering
+    \includegraphics[width = 0.5\textwidth,keepaspectratio]{dice.png}
+\end{frame}
+
+\begin{frame}{Mean}
+    \begin{itemize}
+        \item The first moment of a random variable is its mean, aka average or expected value
+        \item What is the mean value of the result from rolling one die?
+        \item What is the mean value of the sum of rolling both dice?
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Mean}
+    \begin{itemize}
+        \item The first moment of a random variable is its mean, aka average, aka expected value
+        \item What is the mean value of the result from rolling one die?
+        \begin{itemize}
+            \item $E[X] = \frac{1}{6} \times 1 + \frac{1}{6} \times 2 + \frac{1}{6} \times 3 + \frac{1}{6} \times 4 + \frac{1}{6} \times 5 + \frac{1}{6} \times 6 = 3.5$
+        \end{itemize}
+        \item What is the mean value of the sum of rolling both dice?
+        \begin{itemize}
+            \item $E[X] = \frac{1}{36} \times 2 + \frac{2}{36} \times 3 + \frac{3}{36} \times 4 + \frac{4}{36} \times 5 + \frac{5}{36} \times 6 + \frac{6}{36} \times 7 + \frac{5}{36} \times 8 + \frac{4}{36} \times 9 + \frac{3}{36} \times 10 + \frac{2}{36} \times 11 + \frac{1}{36} \times 12 = 7$
+            \item (Could also write out using $\frac{1}{36}$ weight everywhere but easier to consolidate terms)
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Variance}
+    \begin{itemize}
+        \item The second moment of a random variable is its variance
+        \begin{itemize}
+            \item Think of this as the mean distance from the mean: it measures the spread of our data
+            \item $Var(X) = E \left[ (X - E[X])^2 \right] $
+            \item Why do we need to square the spread?
+        \end{itemize}
+        \item What is the variance of rolling one die?
+        \item What is the variance of the sum of rolling both dice?
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Variance}
+    \begin{itemize}
+        \item The second moment of a random variable is its variance
+        \begin{itemize}
+            \item Think of this as the mean distance from the mean: it measures the spread of our data
+            \item $Var(X) = E \left[ (X - E[X])^2 \right] $
+            \item Why do we need to square the spread?
+        \end{itemize}
+        \item What is the variance of rolling one die?
+        \begin{itemize}
+            \item $Var(X) = \frac{1}{6} \times (1 - 3.5)^2 + \frac{1}{6} \times (2 - 3.5)^2 + \dots + \frac{1}{6} \times (6 - 3.5)^2 = \frac{35}{12} \approx 2.92$
+        \end{itemize}
+        \item Similar idea for the sum of 2 dice.
+        \item Often we will work with the \textit{standard deviation} which is the square of the variance since the units are more interpretable.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Higher moments}
+    \begin{itemize}
+        \item Third moment is \textit{skewness} and tells us how symmetric our distribution is
+        \begin{itemize}
+            \item What is the skewness of our example?
+        \end{itemize}
+        \item Fourth moment is the \textit{kurtosis} which measures the mass of the tails
+        \begin{itemize}
+            \item Gives us an idea of the likelihood of large values
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Covariance}
+    \begin{itemize}
+        \item The covariance of two random variables tells us the strength of their \textit{linear} (careful!) relationship
+        \item If two random variables are independent, their covariance is 0
+        \begin{itemize}
+            \item What is the covariance in our example?
+        \end{itemize}
+        \item Often we will look at the \textit{correlation} instead of the covariance, $\frac{cov(X,Y)}{(var(X)var(Y))^{1/2}}$
+        \begin{itemize}
+            \item Unlike covariance, correlation is scaled between -1 and 1 and so is easily interpretable
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Rules on joint distributions}
+    \begin{itemize}
+        \item If two variables are independent, $P(X=x,Y=y) = P(X=x)*P(Y=y)$
+        \item Conditional probability: $P(X=x|Y=y) = \frac{P(X=x,Y=y)}{P(Y=y)}$
+        \begin{itemize}
+            \item This gives us the marginal distribution
+            \item What happens if the events are independent?
+        \end{itemize}
+        \item Bayes' Rule: $P(X=x|Y=y) = \frac{P(Y=y|X=x)P(X=x)}{P(Y=y)}$
+        \item Law of total probability: $P(X=x) = \sum_y P(X=x,Y=y)$
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Second example}
+    \begin{itemize}
+        \item New example: 
+        \begin{itemize}
+            \item Roll the first dice
+            \item If first roll $\geq 4$ then we roll the second die and observe its value
+            \item If first roll $\leq 3$ then the second value is simply set to 1
+        \end{itemize}
+        \item What is the joint probability distribution?
+        \item What is the covariance of the 2 rolls?
+        \item What is the correlation?
+        \item What is the marginal distribution of the two r.v.?
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \centering
+    \includegraphics[width = 1\textwidth,keepaspectratio]{marginal.png}
+\end{frame}
+
+\begin{frame}{Normal distribution}
+    \begin{itemize}
+        \item Two parameters: mean $\mu$ and variance $\sigma^2$
+        \item We can \textit{standardize} a normal random variable X:
+        \begin{itemize}
+            \item $Z = \frac{X-\mu}{\sigma}$ so $Z \sim N(0,1)$
+            \item Careful to divide by standard deviation and not by variance!
+        \end{itemize}
+        \item This will be helpful in hypothesis testing because we can consider how unlikely a given value $z$ is to be drawn from a N(0,1) distribution
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Estimation}
+    \begin{itemize}
+        \item We will often be interested in estimating the mean of a distribution
+        \item Example: wait time in Brody Cafe
+        \item Natural estimator is a sample mean:
+        \begin{itemize}
+            \item Take a survey of people as they walk out of Brody and ask how long they waited
+            \item Average the responses
+        \end{itemize}
+        \item Sample mean $\bar{Y}$ is a random variable since we taking a random sample and thus $\bar{Y}$ has a sampling distribution
+        \begin{itemize}
+            \item What can we say about it?
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Law of Large Numbers}
+    \begin{itemize}
+        \item $E[\bar{Y}] = \mu_Y$ 
+        \item This means that $\bar{Y}$ is an \textit{unbiased} estimator of $\mu_Y$
+        \item As our sample size grows, the sample mean will converge to the true mean
+        \item $var(\bar{Y}) = \frac{\sigma_Y^2}{n}$ so that the variance of our estimator is decreasing as our sample gets larger
+        \item So as our sample size grows, the sample mean will converge to the true mean: $\bar{Y}$ is a \textit{consistent} estimator of $\mu_Y$ (LLN)
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \centering
+    \includegraphics[width = .8\textwidth,keepaspectratio]{LLN.png}
+\end{frame}
+
+\begin{frame}{Central Limit Theorem}
+    \begin{itemize}
+        \item Even better: as $n \to \infty$, $\bar{Y}$ becomes normal ie $\bar{Y} \sim N(\mu_Y,\frac{\sigma_Y^2}{n})$
+        \item This means that we can use the normal distribution to make inferences about the sample mean
+        \item To make it easy, we can standardize the sample mean: $Z = \frac{\bar{Y} - \mu_Y}{\sigma_Y/\sqrt{n}} \sim N(0,1)$
+        \item We will use the sample variance as an estimator for the population variance, just like we do for mean (but we will need to correct a small bias)
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Hypothesis testing}
+    \begin{itemize}
+        \item We can use the normal approximation to perform a \textit{hypothesis test}
+        \begin{itemize}
+            \item One-sided or two-sided
+        \end{itemize}
+        \item Intuition: assuming the true mean is some value $\mu_{Y,0}$, how likely is it that we would observe the sample mean $\bar{Y}$?
+        \begin{itemize}
+            \item If it is ``very'' unlikely, we will reject the null
+            \item If it is ``reasonably likely'' then we fail to reject the null
+        \end{itemize}
+        \item p-value: probability of a test statistic at least as unlikely as the one you observe (under the null)
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Some other terminology}
+    \begin{itemize}
+        \item \textbf{Type-1 error}: reject a true null hypothesis
+        \begin{itemize}
+            \item \textbf{Size} is probability of a type-1 error
+        \end{itemize}
+        \item \textbf{Type-2 error}: fail to reject a false hypothesis
+        \begin{itemize}
+            \item \textbf{Power} is probability of a type-2 error
+        \end{itemize}
+        \item Which of these two mistakes is worse?
+    \end{itemize}
+\end{frame}
+
+\end{document}

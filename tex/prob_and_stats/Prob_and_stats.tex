@@ -20,13 +20,22 @@
 
 % Outline frame
 \begin{frame}{Recap}
-    What did we do this week?
+    What did we do in the first week?
     \begin{itemize}
         \item Review of probability and statistics (Stock \& Watson chapters 2 and 3)
         \item Random variables and their first 4 moments
         \item Marginal and joint distributions
         \item LLN and CLT
         \item Properties of estimators: consistency, unbiasedness, normal approximation
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Recap}
+    What about in the second week?
+    \begin{itemize}
+        \item Estimator for $\sigma^2$
+        \item One variable t-test
+        \item Two variable t-test
     \end{itemize}
 \end{frame}
 
@@ -239,6 +248,52 @@
             \item \textbf{Power} is probability of a type-2 error
         \end{itemize}
         \item Which of these two mistakes is worse?
+        \item What is the relationship between the size and the power?
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \centering
+    \includegraphics[width = .6\textwidth,keepaspectratio]{size_and_power.png}
+\end{frame}
+
+\begin{frame}{Calculating p-value}
+    \begin{itemize}
+        \item So, the \textbf{p-value} tells us how unlikely the null hypothesis is:
+        \begin{itemize}
+            \item  $P_{H_0}(|\frac{\bar{Y} - \mu_{Y,0}}{\sigma_Y/\sqrt{n}}|\geq |\frac{\bar{Y}_{data} - \mu_{Y,0}}{\sigma_Y/\sqrt{n}}|)$
+            \item RHS is just a number! LHS is RV with known distribution under null
+            \item CLT tells us this \textbf{t-statistic} is N(0,1) so probability in tails is easy to look up
+        \end{itemize}
+        \item If observed t-statistic is very large or very small, then p-value is very small and we reject the null
+        \begin{itemize}
+            \item If the null had been true, it is very unlikely that we would have observed the t-statistic
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Using pre-set significance level}
+    \begin{itemize}
+        \item Alternatively, we can decide that we want to do a test at a given significance $\alpha$ and find the value such that the sum in the tails (or tail) is $\alpha$
+        \item Eg if $\alpha=0.05$, then our cutoff points are $(-1.96,1.96)$
+        \item If our t-statistic is outside of these bounds, we reject the null because it was very unlikely
+        \item This is always less-informative than a p-value; but may be more rigorous to pre-set our rejection region
+        \item We can also construct a confidence interval for $\mu_X$ based on our data, eg $\bar{X} \pm 1.96 \frac{\sigma_X}{\sqrt{n}}$
+        \begin{itemize}
+            \item This is the set of all possible $\mu_X$ values which would not be rejected by a two-sided t-test with $\alpha=0.05$
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Hypothesis about difference in means}
+    \begin{itemize}
+        \item What if we want to perform a hypothesis on the difference in means between two random variables?
+        \item Simple: combine them to one!
+        \begin{itemize}
+            \item $X_3 = \bar{X}_1 - \bar{X}_2$
+            \item This is just a difference of two normal random variables so we can use the normal approximation, t-statistic is just $\frac{\bar{X}_1 - \bar{X}_2}{\sqrt{\frac{\sigma_1^2}{n_1} + \frac{\sigma_2^2}{n_2}}}$
+        \end{itemize}
+        \item What if we want to test hypothesis that the difference is 2?
     \end{itemize}
 \end{frame}
 
