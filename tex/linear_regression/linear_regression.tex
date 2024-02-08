@@ -119,9 +119,76 @@
 
 \begin{frame}{Assumptions}
     \begin{itemize}
-        \item $E[\epsilon | X=x] = 0$ so that $\hat{\beta_1}$ is unbiased estimator
-        \item $\{ (X_i, Y_i) \}_{i \leq n}$ are i.i.d. (will give us sampling distributions for coefficient estimates)
-        \item Large outliers are rare
+        \item $E[\epsilon | X=x] = 0$ 
+        \begin{itemize}
+            \item So that $\hat{\beta_1}$ is unbiased estimator
+        \end{itemize}
+        \item $\{ (X_i, Y_i) \}_{i \leq n}$ are i.i.d. 
+        \begin{itemize}
+            \item Will give us sampling distributions for coefficient estimates
+        \end{itemize}
+        \item Large outliers are rare 
+                Will give us sampling distributions for coefficient estimates
+        \begin{itemize}
+            \item OLS is sensitive and our estimate $\hat{\beta}$ might be meaningless otherwise
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Sampling distribution of $\hat{\beta}$}
+    \begin{itemize}
+        \item Just like $\bar{Y}$, $\hat{\beta}$ is a random variable and has a sampling distribution! (Why?)
+        \item So, if we want to be able to say something about the relationship between an $X$ and a $Y$ using $\hat{\beta}$, we need to know something about its distribution
+        \begin{itemize}
+            \item Will allow us to test hypotheses, eg that $\beta_1 = 0$
+            \item Will let us construct confidence intervals and indicate uncertainty
+        \end{itemize}
+        \item Extra assumption on top of the OLS assumptions: that the relationship between $X$ and $Y$ is linear (how might we relax this?)
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Hypothesis testing for $\hat{\beta}$}
+    \begin{itemize}
+        \item Will work in a very similar way to the hypothesis testing we've done for the sample mean
+        \begin{itemize}
+            \item Variance of $\hat{\beta}$ is decreasing in the sample size and in the variance of $X$
+        \end{itemize}
+        \item We will construct a t-statistic, $t=\frac{\hat{\beta}-\beta}{SE(\hat{\beta})}$
+        \item So we can test if $\beta=0$ (ie if $X$ has no relationship with $Y$), or if $\beta<0$ (ie $X$ has a negative relationship with $Y$)
+        \item Can CIs as well
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Binary regression}
+    \begin{itemize}
+        \item Sometimes we have a binary regressor: for example, participation in some program
+        \begin{itemize}
+            \item Effect of taking a drug
+        \end{itemize}
+        \item OLS works in the same way but interpretation is a little different:
+        \begin{itemize}
+            \item $Y_i = \beta_0 + \beta_1 D_i + \epsilon_i$
+            \item $\beta_0$ is mean with no treatment
+            \item $\beta_0 + \beta_1$ is the mean with treatment
+            \item So $\beta_1$ is the average treatment effect
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Heteroskedasticity}
+    \begin{itemize}
+        \item Homoskedasticity: $\epsilon$ has constant variance (doesn't depend on X)
+        \item If we assume Homoskedasticity, we can say some stronger things about the OLS
+        \begin{itemize}
+            \item Gauss-Markov theorem: OLS is the best linear unbiased estimator ie has smallest variance
+            \item Simpler formula for the variance of $\hat{\beta}$
+        \end{itemize}
+        \item What if we assume Homoskedasticity but it's not true?
+        \begin{itemize}
+            \item SE will be too small (probably) meaning that we are \textit{overconfident} in our inference
+        \end{itemize}
+        \item If we assume normal errors, we can say some even stronger things
+        \item Make strong assumptions, get strong results! These are usually difficult to justify.
     \end{itemize}
 \end{frame}
 

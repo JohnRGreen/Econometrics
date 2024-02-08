@@ -1,0 +1,169 @@
+
+% Inbuilt themes in beamer
+\documentclass[aspectratio=169]{beamer}
+\usepackage{graphicx}
+% Theme choice:
+\usetheme{CambridgeUS}
+
+% Title page details: 
+\title{Econometrics Discussion Section 2} 
+\author{John Green}
+\date{Spring 2024}
+
+
+\begin{document}
+
+% Title page
+\begin{frame}
+    \titlepage 
+\end{frame}
+
+% Outline frame
+\begin{frame}{Omitted Variable Bias}
+    \begin{itemize}
+        \item In economics, we often want to determine the impact of $X$ on $Y$
+        \begin{itemize}
+            \item But $X$ is not the only thing going on! Usually many variables are effecting $Y$
+            \item If we don't include these other variables in our model, we will get biased estimates of the effect of $X$ on $Y$, a problem referred to as \textit{omitted variable bias}
+        \end{itemize}
+        \item Let's think about what this does to our estimate with a silly example
+        \begin{itemize}
+            \item We are an AC company, and we want to know what causes people to buy more AC units
+            \item Our statistician tells us that the number of swimming pool accidents is a good predictor of AC units sold
+            \item We run a regression of AC units sold on swimming pool accidents and find a positive relationship
+            \item Should we conclude that swimming pool accidents cause people to buy more AC units?
+        \end{itemize} 
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Omitted Variable Bias}
+    \begin{itemize}
+        \item Should we conclude that swimming pool accidents cause people to buy more AC units?
+        \item Of course not! The omitted variable here is temperature. When it's hot, people buy more AC units and more people go swimming
+        \item Intuitively, what direction do we expect the bias in the effect of swimming pool accidents to be?
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Omitted Variable Bias}
+    \begin{itemize}
+        \item Should we conclude that swimming pool accidents cause people to buy more AC units?
+        \item Of course not! The omitted variable here is temperature. When it's hot, people buy more AC units and more people go swimming
+        \item Intuitively, what direction do we expect the bias in the effect of swimming pool accidents to be?
+        \item It should bias the estimate \textit{upwards}: we are attributing the effect of temperature to swimming pool accidents and thus making swimming pool accidents look more important than they are
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Omitted Variable Bias}
+    \begin{itemize}
+        \item We have omitted variable bias when we have a variable $Z$ that is correlated with $X$ and is a determinant of $Y$
+        \begin{itemize}
+            \item Note: if $Z$ is a determinant of $Y$ but is not correlated with $X$, then it is not a problem!
+            \item These conditions mean that our OLS assumption of $E(u|X) = 0$ is violated
+        \end{itemize}
+        \item Formula for OVB:
+        $$
+        \hat{\beta} \to_{p} \beta + \frac{\sigma_u}{\sigma_X}\rho_{Xu}
+        $$
+        \begin{itemize}
+            \item The intuition from our example shows up in the correlation term
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Causal effects}
+    \begin{itemize}
+        \item We can use OLS to summarize a relationship without attaching any directionality
+        \begin{itemize}
+            \item In this case we need to be careful in our language: "a change in X is associated with a change in Y"
+        \end{itemize}
+        \item Usually economists want to be able to say something \textit{causal}
+        \item Ideal is a randomized controlled trial (RCT): some group gets the treatment, some group doesn't, and we compare outcomes between the two
+        \begin{itemize}
+            \item Observational data usually differs from this in important ways
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Solution to OVB}
+    \begin{itemize}
+        \item An RCT eliminates OVB because we randomly assign the treatment, which will then not be correlated with any other variables!
+        \begin{itemize}
+            \item This is usually not possible in economics --- this is why economics is hard!
+        \end{itemize}
+        \item Cross-tabulation eg run the regression on a subsample of your population where there is no OVB problem (but other issues emerge)
+        \item Try and include omitted variables (obviously) in a multivariable regression
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Multivariate regression}
+    \begin{itemize}
+        \item Same logic as before:
+        $$
+        Y_i = \beta_0 + \beta_1X_{1i} + \beta_2X_{2i} + u_i    
+        $$
+        \item Estimators derived in same way as before (just using matrices)
+        \item Before we looked at $R^2$ as a measure of fit, but now we have to be careful: adding in more variables on the RHS will always increase $R^2$
+        \item Adjusted $R^2$ is a better measure of fit which includes a degrees-of-freedom correction to penalize for adding in more variables
+        \item Add one more assumption our previous 3 from the single-variable case: no perfect multicolinearity
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Perfect multicolinearity}
+    \begin{itemize}
+        \item This is when one of your RHS variables is a perfect linear combination of others
+        \item Why is this a problem?
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Perfect multicolinearity}
+    \begin{itemize}
+        \item This is when one of your RHS variables is a perfect linear combination of others
+        \item Why is this a problem?
+        \item Think about basic algebra:
+        \begin{itemize}
+            \item $y = a*x$
+            \item What is $a$?
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Perfect multicolinearity}
+    \begin{itemize}
+        \item $y = a*x$
+        \item What is $a$?
+        \item $a = \frac{y}{x}$
+        \item But now what if I give you:
+        \begin{itemize}
+            \item $y = b*x + c*x $
+            \item What are $a$ and $b$?
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Perfect multicolinearity}
+    \begin{itemize}
+        \item But now what if I give you:
+        \begin{itemize}
+            \item $y = b*x + c*x $
+            \item What are $b$ and $c$?
+        \end{itemize}
+        \item This question has no unique answer! Any combination of $b$ and $c$ such that $a = b + c$ will work (an infinite number)
+        \item This is what's going on when their is perfect multicolinarity: our coefficient estimates $\beta$ are not identified/unique
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Binary variables}
+    \begin{itemize}
+        \item For this reason we need to be careful when we have binary (0/1) variables in our regression (or any kind of categorical variable)
+        \item We either need to leave one out (the omitted group) or we need to drop our intercept
+        \item Either is fine, just changes interpretation of the coefficient estimates
+    \end{itemize}
+\end{frame}
+
+% \begin{frame}
+%     \centering
+%     \includegraphics[width = .6\textwidth,keepaspectratio]{./figs/age_ed.png}
+% \end{frame}
+
+
+\end{document}

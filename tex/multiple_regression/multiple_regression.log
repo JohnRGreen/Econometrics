@@ -1,10 +1,10 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2023.7.26)  8 FEB 2024 10:23
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2023.7.26)  8 FEB 2024 11:04
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
  %&-line parsing enabled.
-**"c:/Users/johng/OneDrive - Johns Hopkins/TA/Econometrics/Econometrics/tex/linear_regression/linear_regression"
-(c:/Users/johng/OneDrive - Johns Hopkins/TA/Econometrics/Econometrics/tex/linear_regression/linear_regression.tex
+**"c:/Users/johng/OneDrive - Johns Hopkins/TA/Econometrics/Econometrics/tex/multiple_regression/multiple_regression"
+(c:/Users/johng/OneDrive - Johns Hopkins/TA/Econometrics/Econometrics/tex/multiple_regression/multiple_regression.tex
 LaTeX2e <2022-11-01> patch level 1
 L3 programming layer <2023-02-22> (c:/texlive/2022/texmf-dist/tex/latex/beamer/beamer.cls
 Document Class: beamer 2023/02/20 v3.69 A class for typesetting presentations
@@ -541,8 +541,8 @@ Package: amsthm 2020/05/29 v2.20.6
 File: l3backend-pdftex.def 2023-01-16 L3 backend support: PDF output (pdfTeX)
 \l__color_backend_stack_int=\count334
 \l__pdf_internal_box=\box76
-) (./linear_regression.aux)
-\openout1 = `linear_regression.aux'.
+) (./multiple_regression.aux)
+\openout1 = `multiple_regression.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 14.
 LaTeX Font Info:    ... okay on input line 14.
@@ -617,9 +617,9 @@ Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 48
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
 ))
 Package hyperref Info: Link coloring OFF on input line 14.
- (./linear_regression.out) (./linear_regression.out)
+ (./multiple_regression.out) (./multiple_regression.out)
 \@outlinefile=\write5
-\openout5 = `linear_regression.out'.
+\openout5 = `multiple_regression.out'.
 
 LaTeX Font Info:    Overwriting symbol font `operators' in version `normal'
 (Font)                  OT1/cmr/m/n --> OT1/cmss/m/n on input line 14.
@@ -682,18 +682,18 @@ Dictionary: translator-months-dictionary, Language: English
 Dictionary: translator-numbers-dictionary, Language: English 
 ) (c:/texlive/2022/texmf-dist/tex/latex/translator/translator-theorem-dictionary-English.dict
 Dictionary: translator-theorem-dictionary, Language: English 
-) (./linear_regression.nav) [1
+) (./multiple_regression.nav) [1
 
 {c:/texlive/2022/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
-LaTeX Font Info:    Trying to load font information for U+msa on input line 30.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 37.
  (c:/texlive/2022/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 30.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 37.
  (c:/texlive/2022/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-LaTeX Font Info:    Trying to load font information for OT1+mathkerncmss on input line 30.
+LaTeX Font Info:    Trying to load font information for OT1+mathkerncmss on input line 37.
  (c:/texlive/2022/texmf-dist/tex/latex/sansmathaccent/ot1mathkerncmss.fd
 File: ot1mathkerncmss.fd 2020/01/31 Fontinst v1.933 font definitions for OT1/mathkerncmss.
 ) [2
@@ -704,15 +704,9 @@ File: ot1mathkerncmss.fd 2020/01/31 Fontinst v1.933 font definitions for OT1/mat
 
 ] [5
 
-]
-<./figs/age_ed.png, id=173, 433.62pt x 331.2375pt>
-File: ./figs/age_ed.png Graphic file (type png)
-<use ./figs/age_ed.png>
-Package pdftex.def Info: ./figs/age_ed.png  used on input line 82.
-(pdftex.def)             Requested size: 260.00905pt x 198.62778pt.
- [6
+] [6
 
- <./figs/age_ed.png>] [7
+] [7
 
 ] [8
 
@@ -726,35 +720,33 @@ Package pdftex.def Info: ./figs/age_ed.png  used on input line 82.
 
 ] [13
 
-] [14
-
 ]
 \tf@nav=\write6
-\openout6 = `linear_regression.nav'.
+\openout6 = `multiple_regression.nav'.
 
 \tf@toc=\write7
-\openout7 = `linear_regression.toc'.
+\openout7 = `multiple_regression.toc'.
 
 \tf@snm=\write8
-\openout8 = `linear_regression.snm'.
+\openout8 = `multiple_regression.snm'.
 
- (./linear_regression.aux)
-Package rerunfilecheck Info: File `linear_regression.out' has not changed.
+ (./multiple_regression.aux)
+Package rerunfilecheck Info: File `multiple_regression.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
- 21927 strings out of 476024
- 430091 string characters out of 5794016
- 1863382 words of memory out of 5000000
- 41887 multiletter control sequences out of 15000+600000
- 525487 words of font info for 79 fonts, out of 8000000 for 9000
+ 21904 strings out of 476024
+ 429797 string characters out of 5794016
+ 1864382 words of memory out of 5000000
+ 41872 multiletter control sequences out of 15000+600000
+ 523543 words of font info for 72 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 128i,15n,122p,502b,586s stack positions out of 10000i,1000n,20000p,200000b,200000s
-<c:/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb><c:/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb><c:/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb><c:/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb><c:/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmss10.pfb><c:/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmss12.pfb><c:/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmss8.pfb><c:/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmssbx10.pfb><c:/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmssi10.pfb><c:/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmssi8.pfb><c:/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb><c:/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb>
-Output written on linear_regression.pdf (14 pages, 282587 bytes).
+ 128i,15n,122p,506b,589s stack positions out of 10000i,1000n,20000p,200000b,200000s
+<c:/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb><c:/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmss10.pfb><c:/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmss12.pfb><c:/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmss8.pfb><c:/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmssi10.pfb><c:/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmssi8.pfb><c:/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb>
+Output written on multiple_regression.pdf (13 pages, 107367 bytes).
 PDF statistics:
- 477 PDF objects out of 1000 (max. 8388607)
- 414 compressed objects within 5 object streams
- 29 named destinations out of 1000 (max. 500000)
- 96 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 422 PDF objects out of 1000 (max. 8388607)
+ 373 compressed objects within 4 object streams
+ 27 named destinations out of 1000 (max. 500000)
+ 91 words of extra memory for PDF output out of 10000 (max. 10000000)
 
