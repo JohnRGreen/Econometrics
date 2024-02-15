@@ -160,10 +160,46 @@
     \end{itemize}
 \end{frame}
 
-% \begin{frame}
-%     \centering
-%     \includegraphics[width = .6\textwidth,keepaspectratio]{./figs/age_ed.png}
-% \end{frame}
+\begin{frame}{Control variables}
+    \begin{itemize}
+        \item Usually, we cannot just include the omitted variables
+        \item Instead, look for control variable(s) $W$ which are correlated with the omitted variables
+        \item Helps us address the OVB problem and get the causal impact of a variable X ($\to$ conditional mean independence holds)
+        \item Example: impact of years of higher education on wages
+        \begin{itemize}
+            \item Problem: ability is correlated with both! (In which direction is OVB?)
+            \item Solution: control for ability, eg use parental income, quality of local high schools, etc.
+        \end{itemize}
+    \end{itemize}
+\end{frame}
 
+\begin{frame}{Residuals}
+    \begin{itemize}
+        \item Usually, we cannot just include the omitted variables
+        \item Instead, look for control variable(s) $W$ which are correlated with the omitted variables
+        \item Helps us address the OVB problem and get the causal impact of a variable X ($\to$ conditional mean independence holds)
+        \item Example: relationship between GPA and job performance
+        \begin{itemize}
+            \item Problem: ability is correlated with both! (In which direction is OVB?)
+            \item Solution: control for ability, eg use parental income, quality of local high schools, etc.
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \centering
+    \includegraphics[width = .75\textwidth,keepaspectratio]{./figs/heteroskedasticity.png}
+\end{frame}
+
+\begin{frame}{Hypothesis testing}
+    \begin{itemize}
+        \item We already know about the hypothesis test on a single coefficient
+        \item What about a joint hypothesis test? Ie $H_0:~\beta_1 = \beta_2 = 0$ ?
+        \item We want to test these hypotheses jointly, and will do so using an $F$-statistic which follows a $\chi^2_q$ distribution where $q$ is degrees of freedom
+        \item Intuition: look at the fit under the null and alternate hypotheses; if fit under the null is much worse than under the alternate, reject.
+        \item Tests of equality between coefficients, eg $H_0:~\beta_1 = \beta_2$
+        \item Confidence set for coefficients: all combos not rejected under a given test
+    \end{itemize}
+\end{frame}
 
 \end{document}
