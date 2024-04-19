@@ -146,7 +146,7 @@
         $$
        \item Make substitutions:
        $$
-        Y_t = \epsilon_t + \theta \epsilon_{t-1} + \theta^2 \epsilon_{t-2} + \dots
+        Y_t = \epsilon_t + \theta Y_{t-1} + \theta^2 Y_{t-2} + \dots
        $$
        \item Some nice properties:
        \begin{itemize}
@@ -162,11 +162,11 @@
 
 \begin{frame}{Covariates}
     \begin{itemize}
-       \item We can add in other variables (and their lags) to form an autoregressive distributed lag (ADL) model:
+       \item We can add in other variables (and their lags) to form an \textit{autoregressive distributed lag} (ADL) model:
        $$
        Y_t = \beta_0 + \beta_1 Y_{t-1} + \dots + \beta_p Y_{t-p} + \beta_1 X_{t-1} + \dots + \beta_p X_{t-r} + u_t
       $$
-      $p$ lags of $Y$ and $r$ lags of $X$, $ADL(p,r)$.
+      with $p$ lags of $Y$ and $r$ lags of $X$, denoted $ADL(p,r)$.
     \end{itemize}
 \end{frame}
 
@@ -176,16 +176,27 @@
        $$
         RMSFE = \sqrt{E\left[\left(Y_{T+1}-\hat{Y}_{T+1 \mid T}\right)^2\right]}
        $$
-       \item Three methods for estimating the MSFE:
+       \item Again, MSFE has two components:
+       $$
+        MSFE = E\left(u_{T+1}\right)^2+E\left[\left(\hat{\beta}_0-\beta_0\right)+\left(\hat{\beta}_1-\beta_1\right) Y_T+\left(\hat{\beta}_2-\beta_2\right) X_T\right]^2
+       $$
        \begin{enumerate}
-        \item If number of regressors is small, use the in-sample regression error, $\widehat{M S F E}_{S E R}=s_{\hat{u}}^2=\frac{S S R}{T-p-1}$ which ignores the uncertainty from $\hat{\beta}$ 
-        \item If errors are homoscedastic, we can use this approximation for the full MSFE:
-        $$
-        \widehat{M S F E}_{F P E}=\left(\frac{T+p+1}{T}\right) s_{\hat{u}}^2=\left(\frac{T+p+1}{T-p-1}\right)\left(\frac{S S R}{T}\right)
-        $$
-        \item Method with fewest assumptions: pseudo out of sample. Create a rolling estimate through $t=s$, calculate error for $t=s+1,\dots,T$, repeat; $\widehat{M S F E}_{\text {POOS }}=\frac{1}{P} \sum_{s=T-P+1}^T \tilde{u}_s^2$
+        \item Unavoidable oracle uncertainty (first term)
+        \item Uncertainty from estimating coefficients (second term)
        \end{enumerate}
     \end{itemize}
+\end{frame}
+
+\begin{frame}{Forecast error}
+    Three methods for estimating the MSFE:
+       \begin{enumerate}
+            \item If number of regressors is small, use the in-sample regression error, $\widehat{M S F E}_{S E R}=s_{\hat{u}}^2=\frac{S S R}{T-p-1}$ which ignores the uncertainty from $\hat{\beta}$ 
+            \item If errors are homoscedastic, we can use this approximation for the full MSFE:
+            $$
+            \widehat{M S F E}_{F P E}=\left(\frac{T+p+1}{T}\right) s_{\hat{u}}^2=\left(\frac{T+p+1}{T-p-1}\right)\left(\frac{S S R}{T}\right)
+            $$
+            \item Method with fewest assumptions: pseudo out of sample. Create a rolling estimate through $t=s$, calculate error for $t=s+1,\dots,T$, repeat; $\widehat{M S F E}_{\text {POOS }}=\frac{1}{P} \sum_{s=T-P+1}^T \tilde{u}_s^2$
+       \end{enumerate}
 \end{frame}
 
 \begin{frame}{Number of lags}
