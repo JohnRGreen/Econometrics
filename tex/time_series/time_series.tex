@@ -300,9 +300,79 @@
     \end{itemize}
 \end{frame}
 
-% \begin{frame}
-%     \centering
-%     \includegraphics[width = .75\textwidth,keepaspectratio]{./figs/heteroskedasticity.png}
-% \end{frame}
+\begin{frame}{Dynamic causal effects}
+    \begin{itemize}
+        \item So far we've been focused on \textit{forecasting}, where we care about prediction but not inference 
+        \item But we might also want to know about the causal effect of a policy in a time series context, where there may be different impacts across time
+        \begin{itemize}
+            \item Effect of a tax cut on GDP growth after 1 month, 1 year, 1 decade...
+        \end{itemize}
+        \item Problems: we only have one subject, and we can't randomize the treatment
+        \item So, let's think about the same entity receiving a treatment at different dates
+        \begin{itemize}
+            \item This is possible if our data is stationary
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Distributed lag estimator}
+    $$
+    Y_t=\beta_0+\beta_1 X_t+\beta_2 X_{t-1}+\ldots+\beta_r X_{t-r}+u_t
+    $$
+    \begin{itemize}
+        \item $\beta_1$ is the impact of a change in $X_t$ on $Y_t$, just like normal
+        \item $\beta_2$ is the 1-period dynamic multiplier, giving the effect of a change in last period's value $X_{t-1}$ on today's outcome $Y_t$
+        \item When we are considering changing $X_t$, we might want to know what its total impact will be over time; this is given by the \textbf{cumulative multiplier}:
+        $$
+            \gamma_r = \beta_1 + \beta_2 + \dots + \beta_r
+        $$
+        where $\gamma_r$ gives the total effect over the next $r$ periods from changing the value of $X_t$ in this period
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Distributed lag model assumptions}
+    \begin{enumerate}
+        \item Exogeneity: $\mathbb{E} \left[ u_t | X_t, X_{t-1}, \dots \right]  = 0$
+        \begin{itemize}
+            \item Intuition: if we know the full past, we can't predict the error
+            \item Might require \textit{strict exogeneity} which also conditions on the future, but let's not worry about threat
+        \end{itemize}
+        \item $\{X_t,Y_t\}$ and $\{X_{t+j},Y_{t+j}\}$ are independent when $j$ is large
+        \begin{itemize}
+            \item Intuition: two events which are far enough apart in time are not connected
+        \end{itemize}
+        \item $\{X_t,Y_t\}$ are both stationary (similar to the iid requirement, provides internal + external validity)
+        \item Large outliers are rate (up to 8 finite moments!)
+        \item No perfect multicollinearity
+    \end{enumerate}
+\end{frame}
+
+\begin{frame}{Standard errors}
+    \begin{itemize}
+        \item If we have autocorrelation, standard errors will be incorrect
+        \item Use SEs which are robust to heteroskedasticity \textit{and} to autocorrelation, called Newey-West or HAC standard errors
+        \item Depend on how far apart we think autocorrelation extends, denoted by the truncation parameter $m$
+        \begin{itemize}
+            \item No magic for choosing this: should not be too big (then SEs won't work) but not too small (then SEs are not believable)
+            \item Rule of thumb, $m = 0.75T^{1/3}$
+        \end{itemize}
+        \item We don't need these in AR and ADL models because we include lags of $Y$ itself so that error should be uncorrelated
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Cumulative multiplies}
+    \begin{itemize}
+        \item We defined the cumulative effect of a change in $X_t$ after $r$ periods as:
+        $$
+        \gamma_r = \beta_1 + \beta_2 + \dots + \beta_r
+        $$
+        \item But this does not give us the SEs for $\gamma_r$
+        \item Simple solution: rewrite the model in terms of changes in $X$ and $\gamma_i$ coefficients:
+        $$
+        Y_t=\gamma_0+\gamma_1 \Delta X_t+\gamma_2 \Delta X_{t-1}+\ldots+\gamma_{q-1} \Delta X_{t-q+1}+\gamma_q X_{t-q}+u_t
+        $$
+        \item Then we can just estimate this thing with OLS and use the HAC SEs
+    \end{itemize}
+\end{frame}
 
 \end{document}
